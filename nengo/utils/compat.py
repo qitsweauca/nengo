@@ -14,7 +14,7 @@ PY2 = sys.version_info[0] == 2
 if PY2:
     import cPickle as pickle
     import ConfigParser as configparser
-    from inspect import getargspec as getfullargspec
+    import inspect
     from itertools import izip_longest as zip_longest
     from StringIO import StringIO
     string_types = (str, unicode)
@@ -33,6 +33,17 @@ if PY2:
             return s.encode('utf-8')
         assert isinstance(s, bytes)
         return s
+
+    FullArgSpec = collections.namedtuple('FullArgSpec', [
+        'args', 'varargs', 'varkw', 'defaults', 'kwonlyargs', 'kwonlydefaults',
+        'annotations'])
+
+    def getfullargspec(func):
+        argspec = inspect.getargspec(func)  # pylint: disable=deprecated-method
+        return FullArgSpec(
+            args=argspec.args, varargs=argspec.varargs, varkw=argspec.keywords,
+            defaults=argspec.defaults, kwonlyargs=[], kwonlydefaults={},
+            annotations={})
 
     if sys.platform.startswith('win'):
 

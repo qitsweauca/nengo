@@ -14,7 +14,7 @@ try:
     from html import escape
 except ImportError:
     from cgi import escape as cgi_escape
-    escape = lambda s, quote=True: cgi_escape(s, quote=quote)
+    escape = lambda s, quote=True: cgi_escape(s, quote=quote)  # pylint: disable=deprecated-method
 import warnings
 
 import IPython
