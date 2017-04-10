@@ -139,7 +139,8 @@ class _RC(configparser.SafeConfigParser):
         if hasattr(configparser.SafeConfigParser, 'read_file'):
             return configparser.SafeConfigParser.read_file(self, fp, filename)
         else:
-            return configparser.SafeConfigParser.readfp(self, fp, filename)  # pylint: disable=deprecated-method
+            # pylint: disable=deprecated-method
+            return configparser.SafeConfigParser.readfp(self, fp, filename)
 
     def read(self, filenames):
         logger.info('Reading configuration files {}'.format(filenames))
