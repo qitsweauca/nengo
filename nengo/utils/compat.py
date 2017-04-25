@@ -89,7 +89,7 @@ if PY2:
 else:
     import pickle
     import configparser
-    from inspect import getfullargspec
+    from inspect import getfullargspec  # noqa
     from io import StringIO
     from itertools import zip_longest
     from os import replace
