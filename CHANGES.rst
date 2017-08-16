@@ -27,6 +27,9 @@ Release History
 - Added ``amplitude`` parameter to ``LIF`` and ``LIFRate``,
   which scale the output amplitude.
   (`#1325 <https://github.com/nengo/nengo/pull/1325>`_)
+- Added information about number of runnable tests to pytest summary 
+  (`#1082 <https://github.com/nengo/nengo/issues/1082>`_,
+  `#1350 <https://github.com/nengo/nengo/pull/1350>`_)
 
 **Changed**
 
