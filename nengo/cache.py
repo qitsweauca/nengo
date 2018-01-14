@@ -23,8 +23,7 @@ from nengo.solvers import (Lstsq, LstsqL1, Nnls, NnlsL2,
 from nengo.utils import nco
 from nengo.utils.cache import byte_align, bytes2human, human2bytes
 from nengo.utils.compat import (
-    getfullargspec, int_types, is_string, iteritems, pickle, replace, PY2,
-    string_types)
+    int_types, is_string, iteritems, pickle, replace, PY2, string_types)
 from nengo.utils.least_squares_solvers import (
     Cholesky, ConjgradScipy, LSMRScipy, Conjgrad,
     BlockConjgrad, SVD, RandomizedSVD)
