@@ -22,6 +22,12 @@ Release History
 2.7.1 (unreleased)
 ==================
 
+**Added**
+
+- Progress bar support for Jupyter Lab >=0.32.
+  (`#1428 <https://github.com/nengo/nengo/pull/1428>`__,
+  `#1087 <https://github.com/nengo/nengo/issues/1087>`__)
+
 **Changed**
 
 - The order of parameters in learning rules has changed such that
