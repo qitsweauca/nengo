@@ -375,7 +375,7 @@ class VdomProgressBar(ProgressBar):
             'backgroundColor': '#bdd2e6',
             'backgroundImage': 'none',
             'transition':
-                'width 0.1s linear' if progress.progress > 0.  else 'none',
+                'width 0.1s linear' if progress.progress > 0. else 'none',
         }
 
     def _get_unknown_steps_fill_style(self, progress):
@@ -384,7 +384,8 @@ class VdomProgressBar(ProgressBar):
             'animation': 'pb-fill-anim 2s linear infinite',
             'backgroundColor': '#bdd2e6',
             'backgroundSize': '100px 100%',
-            'backgroundImage': ('repeating-linear-gradient('
+            'backgroundImage': (
+                'repeating-linear-gradient('
                 '90deg, #bdd2e6, #edf2f8 40%, #bdd2e6 80%, #bdd2e6)'),
         }
 
