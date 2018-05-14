@@ -3,8 +3,6 @@ import pkg_resources
 import numpy as np
 import pytest
 
-from numpy.testing import assert_almost_equal
-
 import nengo
 import nengo.simulator
 from nengo.builder import Model
@@ -347,5 +345,5 @@ def test_sample_every_trange(Simulator, sample_every):
     with Simulator(model) as sim:
         sim.run(0.01)
 
-    assert_almost_equal(
+    assert np.allclose(
         sim.trange(sample_every=sample_every), np.squeeze(sim.data[p]))
