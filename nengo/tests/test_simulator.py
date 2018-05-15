@@ -49,7 +49,7 @@ def test_trange_with_probes(Simulator):
     with Simulator(m, dt=dt) as sim:
         sim.run(0.333)
     for i, p in enumerate(periods):
-        assert len(sim.trange(p)) == len(sim.data[probes[i]])
+        assert len(sim.trange(sample_every=p)) == len(sim.data[probes[i]])
 
 
 def test_probedict():
