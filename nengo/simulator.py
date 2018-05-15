@@ -359,7 +359,7 @@ class Simulator(object):
 
         self._probe()
 
-    def trange(self, sample_every=None):
+    def trange(self, dt=None, sample_every=None):
         """Create a vector of times matching probed data.
 
         Note that the range does not start at 0 as one might expect, but at
@@ -371,6 +371,13 @@ class Simulator(object):
             The sampling period of the probe to create a range for.
             If None, a time value for every ``dt`` will be produced.
         """
+        if dt is not None:
+            if sample_every is not None:
+                raise ValidationError(
+                    "Cannot specify both `dt` and `sample_every`. "
+                    "Use `sample_every` only.", attr="dt", obj=self)
+            warnings.warn("`dt` is deprecated. Use `sample_every` instead.")
+            sample_every = dt
         period = 1 if sample_every is None else sample_every / self.dt
         steps = np.arange(1, self.n_steps + 1)
         return self.dt * steps[steps % period < 1]
