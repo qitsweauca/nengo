@@ -98,14 +98,6 @@ def test_slow_noexceptions(nb_file, tmpdir):
 
 @pytest.mark.example
 @pytest.mark.parametrize('nb_file', all_examples)
-def test_no_signature(nb_file):
-    pytest.importorskip("IPython", minversion="1.0")
-    nb = load_notebook(os.path.join(examples_dir, "%s.ipynb" % nb_file))
-    assert 'signature' not in nb.metadata, "Notebook has signature"
-
-
-@pytest.mark.example
-@pytest.mark.parametrize('nb_file', all_examples)
 def test_no_outputs(nb_file):
     """Ensure that no cells have output."""
     pytest.importorskip("IPython", minversion="1.0")
@@ -129,6 +121,7 @@ def test_minimal_metadata(nb_file):
     nb = load_notebook(os.path.join(examples_dir, "%s.ipynb" % nb_file))
 
     assert "kernelspec" not in nb.metadata
+    assert "signature" not in nb.metadata
 
     badinfo = (
         "codemirror_mode",
