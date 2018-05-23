@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+shopt -s globstar
+
 NAME=$0
 COMMAND=$1
+STATUS=0
 
 function usage {
     echo "usage: $NAME <command>"
@@ -12,9 +15,20 @@ function usage {
 }
 
 if [[ "$COMMAND" == "install" ]]; then
+    conda install jupyter
     pip install codespell flake8 pylint
 elif [[ "$COMMAND" == "run" ]]; then
-    flake8 -v nengo && codespell -q 3 && pylint nengo
+    jupyter-nbconvert \
+        --log-level WARN \
+        --to python \
+        --TemplateExporter.exclude_input_prompt=True \
+        -- **/*.ipynb
+    sed -i -e 's/# $/#/g' -e '/get_ipython()/d' -- docs/**/*.py
+    flake8 nengo || STATUS=1
+    flake8 --ignore=E703,W291,W391 docs || STATUS=1
+    pylint docs nengo || STATUS=1
+    rm docs/examples/**/*.py
+    codespell -q 3 --skip="./build,./docs/_build,*-checkpoint.ipynb"|| STATUS=1
 else
     if [[ -z "$COMMAND" ]]; then
         echo "Command required"
@@ -24,3 +38,4 @@ else
     echo
     usage
 fi
+exit $STATUS
