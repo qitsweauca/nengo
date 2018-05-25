@@ -137,9 +137,10 @@ def parametrize_function_name(request, function_name):
     """
     suffixes = []
     if 'parametrize' in request.keywords:
-        marker = request.keywords.node.get_closest_marker("parametrize")
-        argnames = [x.strip() for names in marker.args[::2]
-                    for x in names.split(',')]
+        argnames = []
+        for marker in request.keywords.node.iter_markers("parametrize"):
+            argnames.extend([x.strip() for names in marker.args[::2]
+                             for x in names.split(',')])
         for name in argnames:
             value = request.getfixturevalue(name)
             if inspect.isclass(value):

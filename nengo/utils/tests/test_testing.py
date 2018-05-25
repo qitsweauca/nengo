@@ -72,3 +72,13 @@ def test_logger_norecord():
         logger.info("Testing that logger doesn't record")
     with pytest.raises(ValueError):
         logger_obj.get_filepath(ext='txt')
+
+
+@pytest.mark.parametrize("a", [0, 1])
+@pytest.mark.parametrize("b", [2, 3])
+def test_double_parametrize(a, b, plt):
+    assert plt.saveas == "{}.pdf".format("+".join([
+        "utils.test_testing.test_double_parametrize",
+        "b={}".format(b),
+        "a={}".format(a)]))
+    plt.saveas = None  # Skip saving empty plot
