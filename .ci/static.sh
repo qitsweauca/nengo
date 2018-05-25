@@ -4,7 +4,7 @@ shopt -s globstar
 
 NAME=$0
 COMMAND=$1
-STATUS=0
+STATUS=0  # Used to exit with non-zero status if any check fails
 
 function usage {
     echo "usage: $NAME <command>"
@@ -18,11 +18,15 @@ if [[ "$COMMAND" == "install" ]]; then
     conda install jupyter
     pip install codespell flake8 pylint
 elif [[ "$COMMAND" == "run" ]]; then
+    # Convert notebooks to Python scripts
     jupyter-nbconvert \
         --log-level WARN \
         --to python \
         --TemplateExporter.exclude_input_prompt=True \
         -- **/*.ipynb
+    # Remove style issues introduced in the conversion:
+    #   s/# $/#/g replaces lines with just '# ' with '#'
+    #   /get_ipython()/d removes lines containing 'get_ipython()'
     sed -i -e 's/# $/#/g' -e '/get_ipython()/d' -- docs/**/*.py
     flake8 nengo || STATUS=1
     flake8 --ignore=E703,W291,W391 docs || STATUS=1
