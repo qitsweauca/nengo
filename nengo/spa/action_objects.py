@@ -136,7 +136,7 @@ class DotProduct(object):
     can be correctly tracked.
 
     This class is meant to be used with an eval-based parsing system in the
-    `.Condition` class, so that the above ``DotProduct`` can also be created
+    ``Condition`` class, so that the above ``DotProduct`` can also be created
     with ``"0.5*dot(vision, 'DOG')"``.
     """
 
