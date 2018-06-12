@@ -181,7 +181,7 @@ class ProgressBar(object):
 
         Parameters
         ----------
-        progress : ``Progress``
+        progress : Progress
             The progress information to display.
         """
         raise NotImplementedError()
@@ -468,7 +468,7 @@ class AutoProgressBar(ProgressBar):
 
     Parameters
     ----------
-    delegate : ``ProgressBar``
+    delegate : ProgressBar
         The actual progress bar to display, if ETA is high enough.
     min_eta : float, optional
         The minimum ETA threshold for displaying the progress bar.
@@ -505,7 +505,7 @@ class ProgressTracker(object):
 
     Parameters
     ----------
-    progress_bar : ``ProgressBar`` or bool or None
+    progress_bar : ProgressBar or bool or None
         The progress bar to display the progress (or True to use the default
         progress bar, False/None to disable progress bar).
     total_progress : int
@@ -603,7 +603,7 @@ def to_progressbar(progress_bar):
 
     Parameters
     ----------
-    progress_bar : None, bool, or ``ProgressBar``
+    progress_bar : None, bool, or ProgressBar
         Object to be converted to a ``ProgressBar``.
 
     Returns

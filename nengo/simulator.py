@@ -96,7 +96,7 @@ class Simulator(object):
         want to build the network manually, or you want to inject build
         artifacts in the model before building the network, then you can
         pass in a `.Model` instance.
-    progress_bar : bool or ``ProgressBar`` or ``ProgressUpdater``, optional \
+    progress_bar : bool or ProgressBar or ProgressUpdater, optional \
                    (Default: True)
         Progress bar for displaying build and simulation progress.
 
@@ -297,8 +297,8 @@ class Simulator(object):
         ----------
         time_in_seconds : float
             Amount of time to run the simulation for. Must be positive.
-        progress_bar : bool or ``ProgressBar`` or ``ProgressUpdater``, \
-                       optional (Default: True)
+        progress_bar : bool or ProgressBar or ProgressUpdater, optional \
+                       (Default: True)
             Progress bar for displaying the progress of the simulation run.
 
             If True, the default progress bar will be used.
@@ -327,8 +327,8 @@ class Simulator(object):
         ----------
         steps : int
             Number of steps to run the simulation for.
-        progress_bar : bool or ``ProgressBar`` or ``ProgressUpdater``, \
-                       optional (Default: True)
+        progress_bar : bool or ProgressBar or ProgressUpdater, optional \
+                       (Default: True)
             Progress bar for displaying the progress of the simulation run.
 
             If True, the default progress bar will be used.
