@@ -60,7 +60,7 @@ def test_eval_point_decoding(Simulator, nl_nodirect, plt, seed):
     def contour(xy, z):
         xi, yi = np.meshgrid(np.linspace(-1, 1, 101), np.linspace(-1, 1, 101))
         triang = tri.Triangulation(xy[:, 0], xy[:, 1])
-        interp_lin = tri.LinearTriInterpolator(triang, z.ravel( ))
+        interp_lin = tri.LinearTriInterpolator(triang, z.ravel())
         zi = interp_lin(xi, yi)
         plt.contourf(xi, yi, zi, cmap=plt.cm.seismic)
         plt.colorbar()
