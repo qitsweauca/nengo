@@ -609,9 +609,9 @@ def to_progressbar(progress_bar):
     Returns
     -------
     ProgressBar
-        Return *progress_bar* if it is already a progress bar, the default
-        progress bar if *progress_bar* is *True*, and ``NoProgressBar`` if it
-        is *None* or *False*.
+        Return ``progress_bar`` if it is already a progress bar, the default
+        progress bar if ``progress_bar`` is ``True``, and ``NoProgressBar`` if
+        it is ``None`` or ``False``.
     """
     if progress_bar is False or progress_bar is None:
         progress_bar = NoProgressBar()
